@@ -5,7 +5,7 @@
 **CryptoRight** is a decentralized application (dApp) for managing and auctioning digital copyrights as NFTs on the Ethereum blockchain.  
 It enables users to mint copyright tokens, list them for open-source sharing, auction them, bid, transfer, or renounce ownership—powered by smart contracts and IPFS for decentralized metadata storage.
 
-**Contract on Sepolia:**  
+**Contract Address on Sepolia:**  
 0x3eef8e212ebbe858c0dd479a294df5e2e47c740a
 
 
