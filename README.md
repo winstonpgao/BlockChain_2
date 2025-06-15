@@ -1,1 +1,9 @@
-# BlockChain_2
+# Blockchain NFT Copyright Auction Bidding System
+
+## Summary
+
+This application is a copyright management system built on the Ethereum blockchain.
+
+### Demo App 
+
+Click [here](index.html) to launch the CryptoRight application.
