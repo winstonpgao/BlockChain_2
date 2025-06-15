@@ -8,6 +8,8 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 **Contract Address on Sepolia:**  
 0x3eef8e212ebbe858c0dd479a294df5e2e47c740a
 
+🔗 [View on Sepolia Etherscan](https://sepolia.etherscan.io/tx/0x4c7351200f23fc5cb167e4532a76d5039cc7cae73e85003f2346d92097b57ed5)
+
 
 ## Features
 
