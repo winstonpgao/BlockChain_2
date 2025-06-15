@@ -1,4 +1,4 @@
-# Blockchain NFT Copyright Auction Market Place
+# Blockchain NFT Copyright Auction Marketplace
 
 ## Summary
 
