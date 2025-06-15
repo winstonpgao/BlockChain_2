@@ -1,4 +1,4 @@
-const marketAddress = "0x3eef8e212ebbe858c0dd479a294df5e2e47c740a";
+const marketAddress = "0x8Cb9C97db4eDF9C55A6ccA5Af609c08ac4113F79";
 
 const dApp = {
   async init() {
@@ -23,24 +23,29 @@ const dApp = {
   },
 
   logEvent(msg) {
-    $("#event-log").prepend(`<div>${msg}</div>`);
+    // Timestamp
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString();
+    // Number of previous log entries
+    const $log = $("#event-log");
+    const prev = $log.children().length;
+    const index = prev + 1;
+    // Add new event at the top
+    $log.prepend(`<div><span style="color:#ffd35b;">${index}.</span> <span style="color:#89e;">[${timeStr}]</span> ${msg}</div>`);
   },
 
   async fetchAllCopyrights() {
-    // Scan Copyright events for all IDs
     let events = await this.market.getPastEvents('Copyright', { fromBlock: 0, toBlock: 'latest' });
     let unique = {};
     events.forEach(ev => unique[ev.returnValues.copyright_id] = ev.returnValues.reference_uri);
-    this.copyrights = Object.entries(unique); // [[id, uri], ...]
+    this.copyrights = Object.entries(unique);
 
-    // UI: list as clickable chips
     let html = '';
     for (let [id] of this.copyrights) {
       html += `<span class="copyright-chip" onclick="dApp.selectCopyright('${id}')">${id}</span>`;
     }
     $("#copyright-list").html(html);
 
-    // Auto-select latest/newest
     if (this.copyrights.length > 0) {
       this.selectCopyright(this.copyrights[this.copyrights.length-1][0]);
     }
@@ -60,7 +65,6 @@ const dApp = {
       }
     } catch (e) { meta = {}; }
 
-    // Auction info
     let owner, uri;
     try {
       let data = await this.market.methods.copyrights(id).call();
@@ -85,17 +89,54 @@ const dApp = {
       $("#withdraw-msg").text("Auction ended: Withdraw is available.");
     }
 
+    // Ordered, indexed table for status
     let html = `
-      <div><b>ID:</b> ${id}</div>
-      <div><b>Owner:</b> <span style="color:#87f7d7">${owner}</span></div>
-      <div><b>Metadata:</b> ${meta.pinataContent ?
-        `<br>&nbsp;&nbsp;Name: <b>${meta.pinataContent.name}</b>
-        <br>&nbsp;&nbsp;Description: ${meta.pinataContent.description}
-        <br>&nbsp;&nbsp;Image: <br><img src="https://gateway.pinata.cloud/ipfs/${meta.pinataContent.image.replace("ipfs://","")}" style="max-width:260px; margin:5px 0; border-radius:10px; box-shadow:0 2px 8px #00ffd5cc;">`
-        : "(none / not loaded)"}
-      </div>
-      <div><b>Highest Bid:</b> <span style="color:#ffd35b">${web3.utils.fromWei(highestBid.toString(),"ether")}</span> ETH</div>
-      <div><b>Auction Status:</b> ${statusStr}</div>
+      <table style="width:auto;background:rgba(0,255,213,0.06);border-radius:10px;">
+        <tr>
+          <td style="color:#00ffd5;"><b>1.</b></td>
+          <td><b>ID:</b></td>
+          <td>${id}</td>
+        </tr>
+        <tr>
+          <td style="color:#00ffd5;"><b>2.</b></td>
+          <td><b>Owner:</b></td>
+          <td><span style="color:#87f7d7">${owner}</span></td>
+        </tr>
+        <tr>
+          <td style="color:#00ffd5;"><b>3.</b></td>
+          <td><b>Name:</b></td>
+          <td>${meta.pinataContent?.name || ""}</td>
+        </tr>
+        <tr>
+          <td style="color:#00ffd5;"><b>4.</b></td>
+          <td><b>Description:</b></td>
+          <td>${meta.pinataContent?.description || ""}</td>
+        </tr>
+        <tr>
+          <td style="color:#00ffd5;"><b>5.</b></td>
+          <td><b>Highest Bid:</b></td>
+          <td><span style="color:#ffd35b">${web3.utils.fromWei(highestBid.toString(),"ether")}</span> ETH</td>
+        </tr>
+        <tr>
+          <td style="color:#00ffd5;"><b>6.</b></td>
+          <td><b>Auction Status:</b></td>
+          <td>${statusStr}</td>
+        </tr>
+        <tr>
+          <td style="color:#00ffd5;"><b>7.</b></td>
+          <td><b>Image:</b></td>
+          <td>
+            ${meta.pinataContent?.image ? `<img src="https://gateway.pinata.cloud/ipfs/${meta.pinataContent.image.replace("ipfs://","")}" style="max-width:120px; margin:5px 0; border-radius:8px; box-shadow:0 2px 8px #00ffd5cc;">` : ""}
+          </td>
+        </tr>
+        <tr>
+          <td style="color:#00ffd5;"><b>8.</b></td>
+          <td><b>Reference:</b></td>
+          <td>
+            ${uri ? `<a href="https://gateway.pinata.cloud/ipfs/${uri.replace('ipfs://','')}" target="_blank">${uri}</a>` : ""}
+          </td>
+        </tr>
+      </table>
     `;
     $("#auction-info").html(html);
   },
@@ -112,7 +153,6 @@ const dApp = {
       return;
     }
 
-    // Upload image
     const form = new FormData();
     form.append("file", imageInput.files[0]);
     form.append("pinataOptions", JSON.stringify({ cidVersion: 1 }));
@@ -130,7 +170,6 @@ const dApp = {
     const imageURI = `ipfs://${imgHash.IpfsHash}`;
     this.logEvent("Image: " + imageURI);
 
-    // Upload metadata
     this.logEvent("Uploading metadata...");
     const meta = {
       pinataContent: { name, description, image: imageURI },
@@ -149,7 +188,6 @@ const dApp = {
     const referenceURI = `ipfs://${jsonHash.IpfsHash}`;
     this.logEvent("Reference URI: " + referenceURI);
 
-    // Send to blockchain
     await this.market.methods.createCopyright(referenceURI).send();
     this.logEvent("createCopyright() transaction mined");
     await this.fetchAllCopyrights();
@@ -184,14 +222,12 @@ const dApp = {
   async withdraw() {
     const id = $("#withdraw-copyright-id").val();
     if (!id) { alert("Enter a Copyright ID"); return; }
-    // Fetch the auction contract address
     const addr = await this.market.methods.auctions(id).call();
     const auction = new web3.eth.Contract(this.auctionABI, addr, { from: this.account });
     await auction.methods.withdraw().send();
     this.logEvent(`Withdraw called on auction ${id}`);
   },
 
-  // Proprietary Copyrights Section (Collapsible)
   async updateProprietaryCopyrights() {
     $("#dapp-copyrights").html('');
     let i = 1, empty = 0;
