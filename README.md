@@ -36,7 +36,7 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 
 ## Getting Started
 
-1. **Connect MetaMask** to the Ethereum network (testnet recommended).
+1. **Connect MetaMask** to the Sepolia Ethereum network (testnet).
 2. **Mint** a copyright NFT by uploading metadata and an image (requires Pinata API keys).
 3. **Create auctions**, place bids, and manage your copyrights from the intuitive UI.
 4. All actions are powered by Ethereum smart contracts and stored on IPFS.
