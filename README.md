@@ -21,6 +21,19 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 - Withdraw funds after winning or ending an auction
 - Fully decentralized, MetaMask compatible, open-source
 
+## Quick Start
+
+1️⃣ **Install MetaMask**  
+[https://metamask.io/en-GB/download](https://metamask.io/en-GB/download)
+
+2️⃣ **Get free Sepolia ETH (testnet):**  
+- [Google Cloud Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)  
+- [Alchemy Faucet](https://www.alchemy.com/faucets/ethereum-sepolia)
+
+3️⃣ **Register for a free Pinata API key (for IPFS image upload):**  
+[https://pinata.cloud/](https://pinata.cloud/)
+
+
 ## Live Demo
 
 👉 **[Launch CryptoRight dApp](https://winstonpgao.github.io/BlockChain_2/)**
