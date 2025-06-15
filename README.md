@@ -56,12 +56,12 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 👉 **[Launch CryptoRight dApp](https://winstonpgao.github.io/BlockChain_2/)**
 
 
-<p float="left">
-  <img src="NFT/1.png" width="200"/>
-  <img src="NFT/2.png" width="200"/>
-  <img src="NFT/3.png" width="200"/>
-  <img src="NFT/4.png" width="200"/>
-</p>
+
+![NFT 1](NFT/1.png)
+![NFT 2](NFT/2.png)
+![NFT 3](NFT/3.png)
+![NFT 4](NFT/4.png)
+
 
 ---
 
