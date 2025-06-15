@@ -57,10 +57,10 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 
 
 
-![NFT 1](NFT/1.png)
-![NFT 2](NFT/2.png)
-![NFT 3](NFT/3.png)
-![NFT 4](NFT/4.png)
+![NFT 1](NFT/1.PNG)
+![NFT 2](NFT/2.PNG)
+![NFT 3](NFT/3.PNG)
+![NFT 4](NFT/4.PNG)
 
 
 ---
