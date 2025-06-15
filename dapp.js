@@ -1,4 +1,4 @@
-const marketAddress = "0x8Cb9C97db4eDF9C55A6ccA5Af609c08ac4113F79";
+const marketAddress = "0x3eef8e212ebbe858c0dd479a294df5e2e47c740a";
 
 const dApp = {
   async init() {
