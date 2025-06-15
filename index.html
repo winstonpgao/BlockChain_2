@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>CryptoRight</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0d0d2b, #1a1a40);
+      color: #eee;
+    }
+    h4, h5, .card-title {
+      color: #00ffd5;
+      text-shadow: 0 0 8px rgba(0,255,213,0.6);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .chain-card {
+      background: rgba(255,255,255,0.05) !important;
+      border-left: 4px solid #00ffd5;
+      box-shadow: 0 4px 20px rgba(0,255,213,0.3);
+    }
+    .collapsible-header {
+      background: rgba(255,255,255,0.1);
+      color: #00ffd5 !important;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 5px rgba(0,255,213,0.4);
+    }
+    .btn {
+      background: linear-gradient(135deg, #1e3c72, #2a5298) !important;
+      border-radius: 25px;
+      text-transform: none;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .btn:hover {
+      background: linear-gradient(135deg, #2a5298, #1e3c72) !important;
+    }
+    .input-field input {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-bottom: 1px solid #00ffd5;
+    }
+    .input-field input:focus {
+      border-bottom: 1px solid #00ffd5;
+      box-shadow: 0 1px 0 #00ffd5;
+    }
+    a {
+      color: #00ffd5;
+    }
+    #copyright-list {
+      margin: 10px 0 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .copyright-chip {
+      padding: 0.6em 1.2em;
+      border-radius: 20px;
+      background: rgba(0,255,213,0.13);
+      color: #00ffd5;
+      border: 1px solid #00ffd5;
+      font-family: 'Courier New', monospace;
+      cursor: pointer;
+      margin-bottom: 3px;
+      transition: background 0.2s;
+    }
+    .copyright-chip.selected,
+    .copyright-chip:hover {
+      background: #00ffd5 !important;
+      color: #222 !important;
+    }
+    .auction-details {
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      padding: 1em;
+      margin-bottom: 20px;
+      font-size: 1.05em;
+    }
+    .event-log {
+      background: rgba(255,255,255,0.04);
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 1em;
+      color: #74ffe0;
+      padding: 1em;
+      margin-top: 10px;
+      max-height: 230px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h4>BlockChain NFT Copyright System</h4>
+    <p>Explore, mint, auction, bid, transfer, or renounce your copyrights on Ethereum + IPFS.</p>
+    <hr/>
+
+    <!-- Copyrights List Browser -->
+    <h5>Browse Copyrights</h5>
+    <div id="copyright-list"></div>
+    <div id="auction-info" class="auction-details"></div>
+
+    <!-- Mint Card -->
+    <div class="col s12 m6">
+      <div class="card chain-card">
+        <div class="card-content">
+          <span class="card-title"><i class="fas fa-plus-circle"></i> Mint a Work</span>
+          <div class="input-field">
+            <input id="copyright-name" placeholder="Work name..." />
+          </div>
+          <div class="input-field">
+            <input id="copyright-description" placeholder="Description..." />
+          </div>
+          <p>Image: <input id="copyright-image" type="file" /></p>
+          <div class="input-field">
+            <input id="pinata-api-key" placeholder="Pinata API Key"/>
+          </div>
+          <div class="input-field">
+            <input id="pinata-secret" type="password" placeholder="Pinata Secret Key"/>
+          </div>
+        </div>
+        <div class="card-action">
+          <button class="btn" onclick="dApp.createCopyright()">
+            <i class="fas fa-file-upload"></i> Mint
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proprietary Copyrights Section (Collapsible) -->
+    <h5>Proprietary Copyrights</h5>
+    <ul id="dapp-copyrights" class="collapsible"></ul>
+
+    <!-- Create Auction Section -->
+    <div class="col s12 m6">
+      <div class="card chain-card">
+        <div class="card-content">
+          <span class="card-title"><i class="fas fa-gavel"></i> Create Auction</span>
+          <div class="input-field"><input id="auction-copyright-id" placeholder="Copyright ID"/></div>
+          <button class="btn" onclick="dApp.createAuction()">Create Auction</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bid on Auction Section -->
+    <div class="col s12 m6">
+      <div class="card chain-card">
+        <div class="card-content">
+          <span class="card-title"><i class="fas fa-balance-scale"></i> User Bid Auction</span>
+          <div class="input-field"><input id="bid-copyright-id" placeholder="Copyright ID"/></div>
+          <div class="input-field"><input id="bid-amount" placeholder="Bid (ETH)"/></div>
+          <button class="btn" onclick="dApp.bid()">Place Bid</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Actions (End Auction & Withdraw) -->
+    <div class="col s12 m6">
+      <div class="card chain-card">
+        <div class="card-content">
+          <span class="card-title"><i class="fas fa-user-cog"></i> Admin/Owner Actions</span>
+          <div class="input-field"><input id="end-copyright-id" placeholder="Copyright ID"/></div>
+          <button class="btn red" onclick="dApp.endAuction()">End Auction</button>
+          <div class="input-field"><input id="withdraw-copyright-id" placeholder="Copyright ID"/></div>
+          <button class="btn green" id="withdraw-btn" onclick="dApp.withdraw()">Withdraw Funds</button>
+          <div id="withdraw-msg" style="color:#FF9292;margin-top:8px;font-weight:bold;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Log -->
+    <div class="event-log" id="event-log"></div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.2.5/dist/web3.min.js"></script>
+  <script>
+    $(document).ready(()=> $('.collapsible').collapsible());
+  </script>
+  <script src="dapp.js"></script>
+</body>
+</html>
