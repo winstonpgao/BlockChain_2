@@ -34,10 +34,6 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 [https://pinata.cloud/](https://pinata.cloud/)
 
 
-## Live Demo
-
-👉 **[Launch CryptoRight dApp](https://winstonpgao.github.io/BlockChain_2/)**
-
 ## Getting Started
 
 1. **Connect MetaMask** to the Ethereum network (testnet recommended).
@@ -52,6 +48,12 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 - IPFS (via Pinata) for decentralized storage
 - JavaScript, Web3.js, Materialize CSS for UI
 - GitHub Pages for hosting
+
+---
+
+## Live Demo
+
+👉 **[Launch CryptoRight dApp](https://winstonpgao.github.io/BlockChain_2/)**
 
 ---
 
