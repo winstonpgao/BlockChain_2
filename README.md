@@ -51,7 +51,7 @@ All actions are executed on-chain and fully compatible with **MetaMask**, ensuri
 
 ## Deployed Contract
 
-👉 **[Launch CryptoRight dApp](https://winstonpgao.github.io/BlockChain_2/)**
+👉 **[Launch CryptoRight dApp](https://winstonpgao.github.io/Image-Copyright-NFT-Marketplace-CryptoRight-/)**
 
 
 **Contract Address on Sepolia:**  
