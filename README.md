@@ -1,11 +1,19 @@
-# Blockchain NFT Copyright Auction Marketplace
+# 🖼️ CryptoRight: Image Copyright NFT Marketplace
 
 ## Overview
 
-**CryptoRight** is a decentralized application (dApp) for managing and auctioning digital copyrights as NFTs on the Ethereum blockchain.  
+**CryptoRight** is a decentralized application (dApp) designed for **minting, managing, and auctioning image-based copyrights as NFTs** on the Ethereum blockchain.
 
-It enables users to mint copyright tokens, list them for open-source sharing, auction them, bid, transfer, or renounce ownership—powered by smart contracts and IPFS for decentralized metadata storage.
+Built with Solidity smart contracts and IPFS for decentralized storage, CryptoRight empowers creators to:
 
+- ✅ Mint copyright NFTs linked to original image artwork
+- 🔁 Transfer, auction, or renounce copyright ownership
+- 🏷️ Participate in real-time copyright auctions with bidding
+- 🌐 Share or protect digital works transparently and securely
+
+All actions are executed on-chain and fully compatible with **MetaMask**, ensuring end-to-end decentralization with **IPFS** for image and metadata storage.
+
+---
 
 ## Features
 
