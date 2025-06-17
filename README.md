@@ -6,9 +6,6 @@
 
 It enables users to mint copyright tokens, list them for open-source sharing, auction them, bid, transfer, or renounce ownership—powered by smart contracts and IPFS for decentralized metadata storage.
 
-**Contract Address on Sepolia:**  
-0x3eef8e212ebbe858c0dd479a294df5e2e47c740a
-
 🔗 [View on Sepolia Etherscan](https://sepolia.etherscan.io/tx/0x4c7351200f23fc5cb167e4532a76d5039cc7cae73e85003f2346d92097b57ed5)
 
 
@@ -22,7 +19,8 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 - Withdraw funds after winning or ending an auction
 - Fully decentralized, MetaMask compatible, open-source
 
-## Quick Start
+
+## Preparation
 
 1️⃣ **Install MetaMask**  
 [https://metamask.io/en-GB/download](https://metamask.io/en-GB/download)
@@ -42,6 +40,27 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 3. **Create auctions**, place bids, and manage your copyrights from the intuitive UI.
 4. All actions are powered by Ethereum smart contracts and stored on IPFS.
 
+
+---
+
+## Deployed Contract
+
+👉 **[Launch CryptoRight dApp](https://winstonpgao.github.io/BlockChain_2/)**
+
+
+**Contract Address on Sepolia:**  
+0x3eef8e212ebbe858c0dd479a294df5e2e47c740a
+
+
+---
+
+
+## Deploying Your Own Contract
+
+1. Use Remix or similar tool to deploy Copyrightmarket.sol on Sepolia.
+2. Copy deployed contract address to Dapp.js
+
+
 ## Technologies Used
 
 - Solidity smart contracts (ERC721-inspired)
@@ -50,19 +69,15 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 - JavaScript, Web3.js, Materialize CSS for UI
 - GitHub Pages for hosting
 
----
-
-## Live Demo
-
-👉 **[Launch CryptoRight dApp](https://winstonpgao.github.io/BlockChain_2/)**
 
 ---
+
+## Screen Shots:
 
 ![NFT 1](NFT/1.PNG)
 ![NFT 2](NFT/2.PNG)
 ![NFT 3](NFT/3.PNG)
 ![NFT 4](NFT/4.PNG)
-
 
 ---
 
