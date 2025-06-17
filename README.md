@@ -57,7 +57,7 @@ It enables users to mint copyright tokens, list them for open-source sharing, au
 
 ## Deploying Your Own Contract
 
-1. Use Remix or similar tool to deploy Copyrightmarket.sol on Sepolia.
+1. Use Remix or similar tool to deploy Copyrightmarket.sol on a network ie. Sepolia.
 2. Copy deployed contract address to Dapp.js
 
 
